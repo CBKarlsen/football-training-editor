@@ -1,0 +1,61 @@
+{
+  "name": "Dribbling Practice",
+  "field": {
+    "width": 800,
+    "height": 500
+  },
+  "players": [
+    {
+      "id": "b82aecab-fba8-454d-84c2-f89862203156",
+      "name": "Heggebø",
+      "position": {
+        "x": 263,
+        "y": 74
+      }
+    }
+  ],
+  "balls": [
+    {
+      "id": "8064fc52-9d07-45d2-a2b4-3b0b52a716c3",
+      "position": {
+        "x": 221,
+        "y": 145
+      }
+    }
+  ],
+  "arrows": [
+    {
+      "type": "run",
+      "start": {
+        "x": 115,
+        "y": 209
+      },
+      "end": {
+        "x": 535,
+        "y": 187
+      }
+    },
+    {
+      "type": "dribble",
+      "start": {
+        "x": 144,
+        "y": 279
+      },
+      "end": {
+        "x": 583,
+        "y": 291
+      }
+    },
+    {
+      "type": "dribble",
+      "start": {
+        "x": 346,
+        "y": 92
+      },
+      "end": {
+        "x": 477,
+        "y": 78
+      }
+    }
+  ]
+}
