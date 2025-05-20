@@ -1,20 +1,21 @@
 import React from "react";
 import { useDrag, DragPreviewImage } from "react-dnd";
+import { ItemTypes } from "./PaletteConfig";
 
-const PaletteItem = ({ type, label }) => {
+const DraggableItem = ({ type, id, position, children, moveItem }) => {
   const [{ isDragging }, drag, preview] = useDrag(() => ({
     type,
-    item: { type, label },
+    item: { id, type },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   }));
 
   const previewSrc = {
-    player: "/player.png",
-    ball: "/previews/ball.png",
-    cone: "/previews/cone.png",
-    goal: "/previews/goal.png",
+    [ItemTypes.PLAYER]: "/previews/player.png",
+    [ItemTypes.BALL]: "/previews/ball.png",
+    [ItemTypes.CONE]: "/previews/cone.png",
+    [ItemTypes.GOAL]: "/previews/goal.png",
   }[type];
 
   return (
@@ -23,20 +24,17 @@ const PaletteItem = ({ type, label }) => {
       <div
         ref={drag}
         style={{
+          position: "absolute",
+          left: position.x,
+          top: position.y,
+          cursor: "move",
           opacity: isDragging ? 0.5 : 1,
-          cursor: "grab",
-          marginBottom: 8,
-          padding: 8,
-          border: "1px solid #ccc",
-          borderRadius: 4,
-          background: "white",
-          boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
         }}
       >
-        {label}
+        {children}
       </div>
     </>
   );
 };
 
-export default PaletteItem;
+export default DraggableItem;
