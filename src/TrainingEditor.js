@@ -8,9 +8,9 @@ import { defaultPalette, ItemTypes } from "./components/PaletteConfig";
 import { downloadExercise } from "./utils/downloadExercise";
 import uploadExercise from "./utils/uploadExercise";
 
-export default function TrainingEditor() {
+export default function TrainingEditor({ exerciseId }) {
   const [exercise, setExercise] = useState(() => {
-    const saved = localStorage.getItem("trainingDSL");
+    const saved = localStorage.getItem(`trainingDSL:${exerciseId}`);
     return saved
       ? JSON.parse(saved)
       : {
@@ -42,7 +42,7 @@ export default function TrainingEditor() {
   };
 
   useEffect(() => {
-    localStorage.setItem("trainingDSL", JSON.stringify(exercise));
+    localStorage.setItem(`trainingDSL:${exerciseId}`, JSON.stringify(exercise));
   }, [exercise]);
 
   const addItem = (type, position) => {
